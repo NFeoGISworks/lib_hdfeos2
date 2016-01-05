@@ -1,4 +1,4 @@
-# hdfeos2
+# HDF-EOS2
 The HDF-EOS2 is a software library designed built on HDF4* to support EOS-specific data structures, 
 namely Grid, Point, and Swath. 
 The new data structures are constructed from standard HDF data objects, using EOS conventions, through the use of a 
