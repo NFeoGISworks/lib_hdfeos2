@@ -18,7 +18,7 @@ set (HDFEOS_SRC_CSRCS
 )
 
 set (HDFEOS_SRC_CHDRS
-    HE2_config.h
+    ${CMAKE_BINARY_DIR}/HE2_config.h
     HdfEosDef.h
     HDFEOSVersion.h
     cfortHdf.h
