@@ -44,6 +44,9 @@ function(find_anyproject name)
     option(WITH_${name} "Set ON to use ${name}" ${_WITH_OPTION_ON})
     
     string(TOUPPER ${name}_FOUND IS_FOUND)
+    if(NOT DEFINED ${IS_FOUND}) #if the package was found anywhere
+        set(${IS_FOUND} FALSE)
+    endif()
 
     if(WITH_${name})
         option(WITH_${name}_EXTERNAL "Set ON to use external ${name}" OFF)
