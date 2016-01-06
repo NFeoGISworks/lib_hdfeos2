@@ -87,7 +87,7 @@ function(find_anyproject name)
         endif()
     endif()
     
-    if(NOT ${WITH_${name}_EXTERNAL} AND ${${IS_FOUND}})
+    if(NOT WITH_${name}_EXTERNAL AND ${IS_FOUND})
         if(${UPPER_NAME}_INCLUDE_DIRS)       
             include_directories(${${UPPER_NAME}_INCLUDE_DIRS})
         elseif(${UPPER_NAME}_INCLUDE_DIR)
