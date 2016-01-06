@@ -8,7 +8,7 @@
 #    ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
 #)
 
-include_directories (${CMAKE_CURENT_SOURCE_DIR} ${CMAKE_BINARY_DIR})
+include_directories (${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_BINARY_DIR})
 
 set (HDFEOS_SRC_CSRCS
     EHapi.c
