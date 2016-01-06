@@ -33,12 +33,15 @@ mark_as_advanced (HDFEOS_NO_PACKAGES)
 #-----------------------------------------------------------------------------
 set (HDFEOS_GCTP_SRC_LIB_CORENAME     "Gctp")
 set (HDFEOS_SRC_LIB_CORENAME          "hdfeos")
+if(NOT BUILD_SHARED_LIBS)
+    set(HDFEOS_EXTERNAL_LIB_POSTFIX static)
+endif()
 
 #-----------------------------------------------------------------------------
 # Set the true names of all the libraries if customized by external project
 #-----------------------------------------------------------------------------
-set (HDFEOS_GCTP_SRC_LIB_NAME     "${HDFEOS_EXTERNAL_LIB_PREFIX}${HDFEOS_GCTP_SRC_LIB_CORENAME}")
-set (HDFEOS_SRC_LIB_NAME          "${HDFEOS_EXTERNAL_LIB_PREFIX}${HDFEOS_SRC_LIB_CORENAME}")
+set (HDFEOS_GCTP_SRC_LIB_NAME     "${HDFEOS_EXTERNAL_LIB_PREFIX}${HDFEOS_GCTP_SRC_LIB_CORENAME}${HDFEOS_EXTERNAL_LIB_POSTFIX}")
+set (HDFEOS_SRC_LIB_NAME          "${HDFEOS_EXTERNAL_LIB_PREFIX}${HDFEOS_SRC_LIB_CORENAME}${HDFEOS_EXTERNAL_LIB_POSTFIX}")
 
 #-----------------------------------------------------------------------------
 # Set the target names of all the libraries
