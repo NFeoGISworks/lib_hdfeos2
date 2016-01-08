@@ -97,6 +97,8 @@ Dec  10  2013   Abe Taaheri  Increased NGRID from 400 to 800 and NGRIDREGN
 #include "szlib.h"
 #endif
 
+#include "gctp_init.h"
+
 #define	GDIDOFFSET 4194304
 #define SQUARE(x)       ((x) * (x))   /* x**2 */
 #define M_PI1		3.14159265358979323846
@@ -222,10 +224,6 @@ intn GDll2mm_cea(int32 projcode,int32 zonecode, int32 spherecode,float64 projpar
 intn GDmm2ll_cea(int32 projcode,int32 zonecode, int32 spherecode, float64 projparm[], int32 xdimsize, int32 ydimsize, float64 upleftpt[], float64 lowrightpt[], int32 npnts, float64 x[], float64 y[], float64 lon[], float64 lat[]);
 
 void GDgetEastAndNorthFiles(char *eastFile, char *northFile);
-
-int for_init(int outsys, int outzone, double *outparm, int outdatum, char *fn27, char *fn83, int *iflg, int32 (*for_trans[])(double, double, double *, double *));
-int inv_init(int insys, int inzone, double *inparm, int indatum, char *fn27, char *fn83, int *iflg, int32 (*inv_trans[])(double, double, double*, double*));
-
 
 /*----------------------------------------------------------------------------|
 |  BEGIN_PROLOG                                                               |

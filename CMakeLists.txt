@@ -76,7 +76,7 @@ report_version(${PROJECT_NAME} "${VERSION}")
 # configure
 #-----------------------------------------------------------------------------
 include(find_anyproject)
-find_anyproject(ZLIB DEFAULT ON)
+find_anyproject(ZLIB REQUIRED)
 if(ZLIB_FOUND)
     set (HAVE_FILTER_DEFLATE 1)
     set (HAVE_ZLIB_H 1)
@@ -85,7 +85,7 @@ if(ZLIB_FOUND)
     set (HDFEOS_ENABLE_Z_LIB_SUPPORT ON)
 endif()
 
-find_anyproject(JPEG DEFAULT ON)
+find_anyproject(JPEG REQUIRED)
 if(JPEG_FOUND)
     set (HAVE_JPEGLIB_H 1)
     set (HAVE_LIBJPEG 1)
@@ -115,8 +115,6 @@ if(HDF4_FOUND)
     set (HAVE_LIBDF 1)
     set (HAVE_MFHDF_H 1)
     set (HAVE_LIBMFHDF 1) # todo: add to FindHDF4 variable
-else()
-    message(FATAL_ERROR "LibHDF4 is required")    
 endif()
 
 set(LINK_LIBS ${LINK_LIBS} ${TARGET_LINK_LIB})
@@ -330,6 +328,8 @@ endif ()
 # Add the HDFEOS Library Target to the build
 #-----------------------------------------------------------------------------
 add_subdirectory (${CMAKE_SOURCE_DIR}/gctp ${CMAKE_BINARY_DIR}/gctp)
+set(LINK_LIBS ${LINK_LIBS} ${HDFEOS_GCTP_SRC_LIB_TARGET})
+set(DEPENDENCY_LIB ${DEPENDENCY_LIB} ${HDFEOS_GCTP_SRC_LIB_TARGET})
 add_subdirectory (${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src)
 
 #-----------------------------------------------------------------------------

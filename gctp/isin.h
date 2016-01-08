@@ -13,7 +13,6 @@ Raj Gejjagaraguppe (ARC)  1-15-97       Modified the code to work with
  
 D*****************************************************************************/
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -68,29 +67,29 @@ typedef struct {
  
 /* Initialize integerized sinusoidal forward transformations */
  
-int isinusforinit(double , double, double, double, double, double); 
+int isinusforinit(double, double, double, double, double, double);
  
-Isin_t *Isin_for_init(double , double, double, double, long, int); 
+Isin_t *Isin_for_init(double, double, double, double, long, int);
 
 /* Initialize integerized sinusoidal inverse transformations */
 
-int isinusinvinit(double , double, double, double, double, double);
+int isinusinvinit(double, double, double, double, double, double);
 
-Isin_t *Isin_inv_init(double , double, double, double, long, int);
+Isin_t *Isin_inv_init(double, double, double, double, long, int);
 
 /* Forward mapping; converts geographic coordinates ('lon', 'lat')
  * to map projection coordinates ('x', 'y') */
 
 int isinusfor(double, double, double *, double *);
  
-int Isin_fwd(const Isin_t *, double, double, double *, double *); 
+int Isin_fwd(const Isin_t *, double, double, double *, double *);
 
 /* Inverse mapping; converts map projection coordinates ('x', 'y') to
  * geographic coordinates ('lon', 'lat') */
 
 int isinusinv(double, double, double *, double *);
  
-int Isin_inv(const Isin_t *, double, double, double *, double *); 
+int Isin_inv(const Isin_t *, double, double, double *, double *);
 
 /* Deallocate the 'isin' data structure and array memory */
 

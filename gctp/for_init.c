@@ -51,9 +51,9 @@ ALGORITHM REFERENCES
     U.S. Geological Survey Professional Paper 1453 , United State Government
     Printing Office, Washington D.C., 1989.
 *******************************************************************************/
-#include <stdio.h>
 #include "cproj.h"
 #include "proj.h"
+#include "gctp_init.h"
 
 int for_init(
 int outsys,		/* output system code				*/
