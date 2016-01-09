@@ -119,15 +119,24 @@ this permission notice appear in supporting documentation.
 #define SZ_EC             4
 #define SZ_NN            32
 
+#if defined (_WIN32) || defined (WINDOWS)
+#    ifdef HDFEOS_DLL_EXPORTS
+#        define EXTERN extern __declspec(dllexport)
+#    else
+#        define EXTERN extern __declspec(dllimport)
+#    endif
+#else
+#    define EXTERN extern
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Swath Prototype */
-int32 SWopen(char *, intn);
-int32 SWcreate(int32, char *);
-int32 SWattach(int32, char *);
+EXTERN int32 SWopen(char *, intn);
+EXTERN int32 SWcreate(int32, char *);
+EXTERN int32 SWattach(int32, char *);
 intn SWdefdim(int32, char *, int32);
 intn SWdefcomp(int32, int32, intn []);
 int32 SWdiminfo(int32, char *);
@@ -166,8 +175,8 @@ intn SWperiodinfo(int32, int32, char *, int32 *, int32 *, int32 [], int32 *);
 int32 SWdefvrtregion(int32, int32, char *, float64 []);
 intn SWsetfillvalue(int32, char *, VOIDP);
 intn SWgetfillvalue(int32, char *, VOIDP);
-intn SWdetach(int32);
-intn SWclose(int32);
+EXTERN intn SWdetach(int32);
+EXTERN intn SWclose(int32);
 int32 SWupdateidxmap(int32, int32, int32 [], int32 [], int32 []);
 intn SWgeomapinfo(int32, char *);
 intn SWupdatescene(int32, int32);
@@ -179,9 +188,9 @@ intn SWsetdimstrs(int32 swathID, char *fieldname, char *dimname, char *label, ch
 intn SWgetdimstrs(int32 swathID, char *fieldname, char *dimname, char *label, char *unit, char *format, intn len);
 
 /* Grid Prototypes */
-int32 GDopen(char *, intn);
-int32 GDcreate(int32, char *, int32, int32, float64 [], float64 []);
-int32 GDattach(int32, char *);
+EXTERN int32 GDopen(char *, intn);
+EXTERN int32 GDcreate(int32, char *, int32, int32, float64 [], float64 []);
+EXTERN int32 GDattach(int32, char *);
 intn GDdefdim(int32, char *, int32);
 intn GDdefproj(int32, int32, int32, int32, float64 []);
 intn GDblkSOMoffset(int32, float32 [], int32, char *);
@@ -226,16 +235,16 @@ int32 GDgetpixvalues(int32, int32, int32 [], int32 [], char *, VOIDP);
 int32 GDinterpolate(int32, int32, float64 [], float64 [], char *, float64 []);
 intn GDsetfillvalue(int32, char *, VOIDP);
 intn GDgetfillvalue(int32, char *, VOIDP);
-intn GDdetach(int32);
-intn GDclose(int32);
+EXTERN intn GDdetach(int32);
+EXTERN intn GDclose(int32);
 
-intn GDij2ll(int32, int32, float64 [], int32, int32, int32, 
+EXTERN intn GDij2ll(int32, int32, float64 [], int32, int32, int32, 
 	     float64 [], float64 [], int32, int32 [], int32 [],
 	     float64 [], float64 [], int32, int32);
-intn GDll2ij(int32, int32, float64 [], int32, int32, int32, float64 [], 
+EXTERN intn GDll2ij(int32, int32, float64 [], int32, int32, int32, float64 [], 
              float64 [], int32, float64 [], float64 [],	int32 [], int32 [],
 	     float64 [], float64 []);
-intn GDrs2ll(int32, float64 [], int32, int32,
+EXTERN intn GDrs2ll(int32, float64 [], int32, int32,
 	     float64 [], float64 [],
 	     int32, float64 [], float64 [],
 	     float64 [], float64 [], int32, int32);
@@ -247,10 +256,10 @@ intn GDsetdimstrs(int32 gridID, char *fieldname, char *dimname, char *label, cha
 intn GDgetdimstrs(int32 gridID, char *fieldname, char *dimname, char *label, char *unit, char *format, intn len);
 
 /* Point Prototypes */
-int32 PTopen(char *, intn);
-int32 PTcreate(int32, char *);
-int32 PTnrecs(int32, int32);
-int32 PTnlevels(int32);
+EXTERN int32 PTopen(char *, intn);
+EXTERN int32 PTcreate(int32, char *);
+EXTERN int32 PTnrecs(int32, int32);
+EXTERN int32 PTnlevels(int32);
 int32 PTsizeof(int32, char *, int32 []);
 int32 PTnfields(int32, int32, int32 *);
 int32 PTlevelindx(int32, char *);
@@ -279,40 +288,40 @@ intn PTperiodrecs(int32, int32, int32, int32 *, int32 []);
 intn PTperiodinfo(int32, int32 periodID, int32, char *, int32 *);
 intn PTextractregion(int32, int32 regionID, int32, char *, VOIDP);
 intn PTextractperiod(int32, int32 periodID, int32, char *, VOIDP);
-intn PTdetach(int32);
-intn PTclose(int32);
+EXTERN intn PTdetach(int32);
+EXTERN intn PTclose(int32);
 
 
 
 /* EH Utility Prototypes */
-float64 EHconvAng(float64, intn);
-int32 EHparsestr(char *, char, char *[], int32 []);
-int32 EHstrwithin(char *, char *, char);
-intn EHchkODL(char *);
-intn EHloadliststr(char *[], int32, char *, char);
-intn EHgetversion(int32, char *);
-int32 EHopen(char *, intn);
-intn EHchkfid(int32, char *, int32 *, int32 *, uint8 *);
-intn EHidinfo(int32, int32 *, int32 *);
-int32 EHgetid(int32, int32, char *, intn, char *);
-intn EHrevflds(char *, char *);
-intn EHinsertmeta(int32, char *, char *, int32, char *, int32 []);
-intn EHgetmetavalue(char *[], char *, char *);
-char * EHmetagroup(int32, char *, char *, char *, char *[]);
-intn EHfillfld(int32, int32, int32, int32, int32, int32 [], VOIDP);
-intn EHattr(int32, int32, char *, int32, int32, char *, VOIDP);
-intn EHattrinfo(int32, int32, char *, int32 *, int32 *);
-int32 EHattrcat(int32, int32, char *, int32 *);
-intn EHfilename(int32, char *);
-int32 EHcntOBJECT(char *[]);
-int32 EHcntGROUP(char *[]);
+EXTERN float64 EHconvAng(float64, intn);
+EXTERN int32 EHparsestr(char *, char, char *[], int32 []);
+EXTERN int32 EHstrwithin(char *, char *, char);
+EXTERN intn EHchkODL(char *);
+EXTERN intn EHloadliststr(char *[], int32, char *, char);
+EXTERN intn EHgetversion(int32, char *);
+EXTERN int32 EHopen(char *, intn);
+EXTERN intn EHchkfid(int32, char *, int32 *, int32 *, uint8 *);
+EXTERN intn EHidinfo(int32, int32 *, int32 *);
+EXTERN int32 EHgetid(int32, int32, char *, intn, char *);
+EXTERN intn EHrevflds(char *, char *);
+EXTERN intn EHinsertmeta(int32, char *, char *, int32, char *, int32 []);
+EXTERN intn EHgetmetavalue(char *[], char *, char *);
+EXTERN char * EHmetagroup(int32, char *, char *, char *, char *[]);
+EXTERN intn EHfillfld(int32, int32, int32, int32, int32, int32 [], VOIDP);
+EXTERN intn EHattr(int32, int32, char *, int32, int32, char *, VOIDP);
+EXTERN intn EHattrinfo(int32, int32, char *, int32 *, int32 *);
+EXTERN int32 EHattrcat(int32, int32, char *, int32 *);
+EXTERN intn EHfilename(int32, char *);
+EXTERN int32 EHcntOBJECT(char *[]);
+EXTERN int32 EHcntGROUP(char *[]);
 /* 9/3/97 Abe changed the first argument from 
    float64 (float64 []) to float64 (*) (float64 [])  for SunOS
    float64 () (float64 []) to float64 (*) (float64 [])  for all other OSs */
-intn EHbisect(float64 (*) (float64 []), float64 [], int32, float64, float64, 
+EXTERN intn EHbisect(float64 (*) (float64 []), float64 [], int32, float64, float64, 
 	      float64, float64 *);
-int32 EHinquire(char *, char *, char *, int32 *);
-intn EHclose(int32);
+EXTERN int32 EHinquire(char *, char *, char *, int32 *);
+EXTERN intn EHclose(int32);
 
 
 
