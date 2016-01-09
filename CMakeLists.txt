@@ -465,7 +465,7 @@ if (NOT HDFEOS_EXTERNALLY_CONFIGURED)
     )
     install (
         FILES ${doc_files}
-        DESTINATION ${INSTALL_DATA_DIR}/release_docs
+        DESTINATION ${INSTALL_DATA_DIR}/doc/${PACKAGE}/release_docs
         COMPONENT hdfeosdocuments
     )
   endif ()
