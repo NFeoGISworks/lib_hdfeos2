@@ -408,12 +408,12 @@ if (NOT HDFEOS_EXTERNALLY_CONFIGURED)
     if(BUILD_SHARED_LIBS)
         export (
             TARGETS ${HDFEOS_LIBRARIES_TO_EXPORT} ${HDFEOS_LIB_DEPENDENCIES}
-            FILE ${PROJECT_NAME}-exports.cmake  EXPORT_LINK_INTERFACE_LIBRARIES
+            FILE ${PROJECT_NAME}-exports.cmake
         )
     else()
         export (
             TARGETS ${HDFEOS_LIBRARIES_TO_EXPORT} ${HDFEOS_LIB_DEPENDENCIES}
-            FILE ${PROJECT_NAME}static-exports.cmake EXPORT_LINK_INTERFACE_LIBRARIES
+            FILE ${PROJECT_NAME}static-exports.cmake
         )    
     endif()    
 endif ()
