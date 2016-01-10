@@ -104,7 +104,7 @@ if (MSVC)
 endif ()
 
 if(LINK_LIBS)
-    target_link_libraries (${HDFEOS_GCTP_SRC_LIB_TARGET} ${LINK_LIBS})
+    target_link_libraries (${HDFEOS_GCTP_SRC_LIB_TARGET} PRIVATE ${LINK_LIBS})
 endif() 
 if(DEPENDENCY_LIB)
     add_dependencies(${HDFEOS_GCTP_SRC_LIB_TARGET} ${DEPENDENCY_LIB})  

@@ -35,7 +35,7 @@ if (MSVC)
 #else ()
 #  set_target_properties (${HDFEOS_SRC_LIB_TARGET} PROPERTIES LINK_FLAGS "-Wl,-single_module")
 endif ()
-target_link_libraries (${HDFEOS_SRC_LIB_TARGET} ${LINK_LIBS})
+target_link_libraries (${HDFEOS_SRC_LIB_TARGET} PRIVATE ${LINK_LIBS})
 
 if(DEPENDENCY_LIB)
     add_dependencies(${HDFEOS_SRC_LIB_TARGET} ${DEPENDENCY_LIB})  
