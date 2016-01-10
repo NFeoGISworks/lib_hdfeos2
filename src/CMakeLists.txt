@@ -31,7 +31,7 @@ endif ()
 
 add_library (${HDFEOS_SRC_LIB_TARGET} ${LIB_TYPE} ${HDFEOS_SRC_CSRCS} ${HDFEOS_SRC_CHDRS})
 if (MSVC)
-  target_link_libraries (${HDFEOS_SRC_LIB_TARGET} "ws2_32.lib")
+  target_link_libraries (${HDFEOS_SRC_LIB_TARGET} PRIVATE "ws2_32.lib")
 #else ()
 #  set_target_properties (${HDFEOS_SRC_LIB_TARGET} PROPERTIES LINK_FLAGS "-Wl,-single_module")
 endif ()

@@ -100,7 +100,7 @@ set (GCTP_HEADERS
 
 add_library (${HDFEOS_GCTP_SRC_LIB_TARGET} ${LIB_TYPE} ${GCTP_SRC_CSRCS} ${GCTP_HEADERS})
 if (MSVC)
-  target_link_libraries (${HDFEOS_GCTP_SRC_LIB_TARGET} "ws2_32.lib")
+  target_link_libraries (${HDFEOS_GCTP_SRC_LIB_TARGET} PRIVATE "ws2_32.lib")
 endif ()
 
 if(LINK_LIBS)
