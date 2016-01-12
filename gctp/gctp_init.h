@@ -1,14 +1,30 @@
 #include <stdio.h>
 #include "hdf.h"
 
-#if defined (_WIN32) || defined (WINDOWS)
-#    ifdef GCTP_DLL_EXPORTS
-#        define EXTERN extern __declspec(dllexport)
-#    else
-#        define EXTERN extern __declspec(dllimport)
-#    endif
+#ifdef GCTP_STATIC
+  #define EXTERN(type) extern type
 #else
-#    define EXTERN extern
+#   if defined (_WIN32) || defined (WINDOWS)
+#    ifdef GCTP_DLL_EXPORTS
+#      ifdef __GNUC__
+#        define EXTERN(type) extern __attribute__((dllexport)) type
+#      else        
+#        define EXTERN(type) extern __declspec(dllexport) type
+#      endif 
+#    else
+#      ifdef __GNUC__
+#        define EXTERN(type) extern __attribute__((dllimport)) type
+#      else        
+#        define EXTERN(type) extern __declspec(dllimport) type
+#      endif 
+#    endif
+#   else
+#     if __GNUC__ >= 4
+#       define EXTERN(type) __attribute__((visibility("default"))) type
+#     else
+#       define EXTERN(type)                extern type
+#     endif 
+#   endif
 #endif
 
 #ifdef __cplusplus
