@@ -122,7 +122,8 @@ if (BUILD_SHARED_LIBS)
     set_target_properties (${HDFEOS_GCTP_SRC_LIB_TARGET} PROPERTIES SOVERSION ${LIB_VERSION})
     set_target_properties (${HDFEOS_GCTP_SRC_LIB_TARGET} PROPERTIES DEFINE_SYMBOL GCTP_DLL_EXPORTS)
 else()        
-    set_target_properties (${HDFEOS_GCTP_SRC_LIB_TARGET} PROPERTIES DEFINE_SYMBOL GCTP_STATIC)
+    add_definitions(-DGCTP_STATIC)
+    #set_target_properties (${HDFEOS_GCTP_SRC_LIB_TARGET} PROPERTIES DEFINE_SYMBOL GCTP_STATIC)
 endif ()
 
 #-- Apple Specific install_name for libraries
