@@ -100,7 +100,7 @@ report_version(${PROJECT_NAME} "${VERSION}")
 #-----------------------------------------------------------------------------
 # configure
 #-----------------------------------------------------------------------------
-include(find_anyproject)
+include(FindAnyProject)
 find_anyproject(ZLIB REQUIRED)
 if(ZLIB_FOUND)
     set (HAVE_FILTER_DEFLATE 1)
