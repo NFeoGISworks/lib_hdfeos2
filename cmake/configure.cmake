@@ -123,6 +123,6 @@ set (PACKAGE_TARNAME "hdf-eos2")
 set (PACKAGE_URL "http://www.hdfgroup.org")
 set (PACKAGE_BUGREPORT "help@hdfgroup.org")
 
-configure_file(${CMAKE_MODULE_PATH}/HE2_config.h.cmakein ${CMAKE_CURRENT_BINARY_DIR}/HE2_config.h IMMEDIATE @ONLY)
+configure_file(${CMAKE_SOURCE_DIR}/cmake/HE2_config.h.cmakein ${CMAKE_CURRENT_BINARY_DIR}/HE2_config.h IMMEDIATE @ONLY)
 add_definitions (-DHAVE_CONFIG_H)
 
