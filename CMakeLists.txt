@@ -421,8 +421,6 @@ if (NOT HDFEOS_EXTERNALLY_CONFIGURED)
 endif ()
 add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake) 
 
-write_ext_options()
-
 #-----------------------------------------------------------------------------
 # Configure the hdfeos-config.cmake file for the build directory
 #-----------------------------------------------------------------------------
