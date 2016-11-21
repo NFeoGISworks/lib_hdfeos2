@@ -407,17 +407,10 @@ endif ()
 # Export all exported targets to the build tree for use by parent project
 #-----------------------------------------------------------------------------
 if (NOT HDFEOS_EXTERNALLY_CONFIGURED)
-    if(BUILD_SHARED_LIBS)
-        export (
-            TARGETS ${HDFEOS_LIBRARIES_TO_EXPORT} ${HDFEOS_LIB_DEPENDENCIES}
-            FILE ${PROJECT_NAME}-exports.cmake EXPORT_LINK_INTERFACE_LIBRARIES
-        )
-    else()
-        export (
-            TARGETS ${HDFEOS_LIBRARIES_TO_EXPORT} ${HDFEOS_LIB_DEPENDENCIES}
-            FILE ${PROJECT_NAME}static-exports.cmake EXPORT_LINK_INTERFACE_LIBRARIES
-        )    
-    endif()    
+    export (
+        TARGETS ${HDFEOS_LIBRARIES_TO_EXPORT} ${HDFEOS_LIB_DEPENDENCIES}
+        FILE ${PROJECT_NAME}-exports.cmake EXPORT_LINK_INTERFACE_LIBRARIES
+    )
 endif ()
 add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake) 
 
