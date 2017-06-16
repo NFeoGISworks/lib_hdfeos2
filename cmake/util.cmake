@@ -36,7 +36,7 @@ function(check_version major minor full)
         "\\1" HDFEOS_VERS_MAJOR ${_ehapi_c_contents})
     string (REGEX REPLACE ".*#define[ \t]+HDFEOSVERSION1[ \t]+\"[0-9]*.([0-9]*).*$"
         "\\1" HDFEOS_VERS_MINOR ${_ehapi_c_contents})
-    
+
     set(${major} ${HDFEOS_VERS_MAJOR} PARENT_SCOPE)
     set(${minor} ${HDFEOS_VERS_MINOR} PARENT_SCOPE)
     set(${full} ${HDFEOS_FULL_VERSION} PARENT_SCOPE)
@@ -49,10 +49,10 @@ function(report_version name ver)
     string(ASCII 27 Esc)
     set(BoldYellow  "${Esc}[1;33m")
     set(ColourReset "${Esc}[m")
-        
+
     message(STATUS "${BoldYellow}${name} version ${ver}${ColourReset}")
-    
-endfunction()  
+
+endfunction()
 
 # macro to find packages on the host OS
 macro( find_exthost_package )
@@ -60,17 +60,9 @@ macro( find_exthost_package )
         set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER )
         set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY NEVER )
         set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE NEVER )
-        if( CMAKE_HOST_WIN32 )
-            SET( WIN32 1 )
-            SET( UNIX )
-        elseif( CMAKE_HOST_APPLE )
-            SET( APPLE 1 )
-            SET( UNIX )
-        endif()
+
         find_package( ${ARGN} )
-        SET( WIN32 )
-        SET( APPLE )
-        SET( UNIX 1 )
+
         set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY )
         set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
         set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
@@ -86,17 +78,9 @@ macro( find_exthost_program )
         set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER )
         set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY NEVER )
         set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE NEVER )
-        if( CMAKE_HOST_WIN32 )
-            SET( WIN32 1 )
-            SET( UNIX )
-        elseif( CMAKE_HOST_APPLE )
-            SET( APPLE 1 )
-            SET( UNIX )
-        endif()
+
         find_program( ${ARGN} )
-        SET( WIN32 )
-        SET( APPLE )
-        SET( UNIX 1 )
+
         set( CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY )
         set( CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY )
         set( CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY )
